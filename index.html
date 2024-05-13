@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icons/circle.svg" />
+    <title>Maskoj</title>
+</head>
+
+<body>
+    <h1>Gerador de combinações de máscaras</h1>
+    <form>
+        <fieldset>
+            <legend>Configuração do Cenário</legend>
+            <p>
+                <label id="players-label" for="players">Quantidade de jogadores: 4</label>
+                <input type="range" min="4" value="4" max="12" step="1" id="players" name="players" required>
+            </p>
+            <p>
+                <label for="extra-card">Adicionar carta extra?</label>
+                <input type="checkbox" name="has-extra-card" id="has-extra-card">
+            </p>
+            <p>
+                <button type="button" id="generate">Gerar Novo Cenário</button>
+            </p>
+        </fieldset>
+    </form>
+    <section id="scenario">
+
+    </section>
+    <script src="app.js" defer></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js").then(
+                (registration) => {
+                    console.log("Service worker registration successful:", registration);
+                },
+                (error) => {
+                    console.error(`Service worker registration failed: ${error}`);
+                },
+            );
+        } else {
+            console.error("Service workers are not supported.");
+        }
+    </script>
+</body>
+
+</html>
